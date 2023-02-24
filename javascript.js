@@ -34,16 +34,19 @@ function gerarMeme(){
 
 }
 
-function compartilharMeme(){
+async function compartilharMeme(){
     let imgMeme = document.querySelector('#imgMeme');
-    let file = new File([imgMeme.src], 'meme.jpg', {type: 'image/jpg'});
-    navigator.share({
+    let resImg = await fetch(imgMeme.src);
+    let contentType = resImg.headers.get("content-type");
+    let blob = await resImg.blob();
+    let binaryFile = new File([blob], `meme.${resImg.type}`, { type: contentType});
+
+    window.navigator.share({
         title: 'Memes de Programação',
         text: 'Olha que engraçado esse meme!',
         url: window.location.href,
-        files: [file]
+        files: Array(binaryFile)
     })
     .then(()=> console.log('Compartilhado com sucesso!'))
     .catch((error) => console.error('Erro ao compartilhar:', error))
 }
-
