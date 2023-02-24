@@ -1,9 +1,9 @@
 let imgMemes = [
-    "/img/meme01.jpg",
-    "/img/meme02.jpg",
-    "/img/meme03.jpg",
-    "/img/meme04.jpg",
-    "/img/meme05.jpg",
+    "img/meme01.jpg",
+    "img/meme02.jpg",
+    "img/meme03.jpg",
+    "img/meme04.jpg",
+    "img/meme05.jpg",
 ]
 
 let posicaoAtualImg
