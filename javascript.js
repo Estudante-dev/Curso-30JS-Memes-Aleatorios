@@ -38,8 +38,9 @@ async function compartilharMeme(){
     let imgMeme = document.querySelector('#imgMeme');
     let resImg = await fetch(imgMeme.src);
     let contentType = resImg.headers.get("content-type");
+    let extesionFile = contentType.split("/")?.[1] || "jpg";
     let blob = await resImg.blob();
-    let binaryFile = new File([blob], `meme.${resImg.type}`, { type: contentType});
+    let binaryFile = new File([blob], `meme.${extesionFile}`, { type: contentType});
 
     window.navigator.share({
         title: 'Memes de Programação',
